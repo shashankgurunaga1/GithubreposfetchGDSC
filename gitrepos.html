@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Get GITRepos Information by Username </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"content="width=device-width">
+    <link id="theme1" rel="stylesheet" 
+        type="text/css" href="index1.css" />
+
+  
+    <script>
+        
+         function username(a)
+            {
+                console.log("inside");
+                var username = arguments[0];
+                //if no username is entered 
+                if(username === null || username === ""){
+                         alert(" Please enter the Github User Name.");
+                 }
+                let api =`https://api.github.com/users/${username}/repos`;
+
+            
+                console.log(api) ;
+                fetch(api).then((data)=>{
+                return data.json();
+                }).then((response)=>{
+                console.log(response);
+                var display_string="";
+                //if username does not exist 
+                if (response.length ==0)
+                {
+                    display_string ="user does not exist";
+                }
+
+                
+                for (var i=0 ;i<response.length;i++){
+                    console.log(response[i].name);
+                    console.log(response[i].description);
+                    console.log(response[i].url)
+                    response[i].name;
+                    if (response[i].name== null)
+                    {
+                        response[i].name="";
+                    }
+                    if (response[i].description== null)
+                    {
+                        response[i].description ="";
+                    }
+                    if (response[i].url== null)
+                    {
+                        response[i].url ="";
+                    }
+                    
+                    display_string = display_string.concat('<br><div class="container"> <div class="card"><div class="card-body"><b>Name:</b> ').concat(response[i].name).concat('<br/><b>Description:</b> ').concat(response[i].description).concat('<br/><b>html_url:</b> <a href="').concat(response[i].url).concat('">').concat(response[i].url).concat('</a></div></div></div><br>');
+        
+                    console.log(display_string);
+                    
+                    }
+                    document.getElementById("html_output_string").innerHTML=display_string; 
+                
+                }  )
+                 
+                
+             }
+            
+    
+    //cityname("paris");
+        
+    </script>
+
+</head>
+<body style ="background-image:url('index.jpg');" ></body>
+    
+        <h1>Get GITRepos Information by Username </h1>
+
+          <div>
+        
+                 Enter user name: <input type="text" name="user_name" id="user_name"><br>
+                <button onclick="username(document.getElementById('user_name').value)">ShowDetails</button>
+        </div>
+
+        <div class="flex-container">
+               
+                <p id="html_output_string" align="centre"> </p>
+          
+        </div>
+
+</body>
+
+</html>
+
