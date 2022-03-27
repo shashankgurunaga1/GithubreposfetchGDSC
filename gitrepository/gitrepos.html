@@ -49,7 +49,7 @@
                 for (var i=0 ;i<response.length;i++){
                     console.log(response[i].name);
                     console.log(response[i].description);
-                    console.log(response[i].url)
+                    console.log(response[i].html_url)
                     response[i].name;
                     if (response[i].name== null)
                     {
@@ -59,12 +59,12 @@
                     {
                         response[i].description ="";
                     }
-                    if (response[i].url== null)
+                    if (response[i].html_url== null)
                     {
                         response[i].url ="";
                     }
                     
-                    display_string = display_string.concat('<br><div class="container"> <div class="card" id="cardcolor" ><div class="card-body" ><b>Name:</b> ').concat(response[i].name).concat('<br/><b>Description:</b> ').concat(response[i].description).concat('<br/><b>html_url:</b> <a href="').concat(response[i].url).concat('">').concat(response[i].url).concat('</a></div></div></div><br>');
+                    display_string = display_string.concat('<br><div class="container"> <div class="card" id="cardcolor" ><div class="card-body" ><b>Name:</b> ').concat(response[i].name).concat('<br/><b>Description:</b> ').concat(response[i].description).concat('<br/><b>html_url:</b> <a href="').concat(response[i].html_url).concat('">').concat(response[i].html_url).concat('</a></div></div></div><br>');
         
                     console.log(display_string);
                     
